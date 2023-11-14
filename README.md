@@ -1,6 +1,10 @@
 # fixabi
 Adds secondary indexes to ABI files
 
+## To-do
+
+* Check if this is correct: currently, [`checksum256` C++ type is mapping to `sha256` ABI type](https://github.com/FluxBP/fixabi/blob/70ca1e22666fdb774c9d1ddd8f63cb2ff8c47f6e/fixabi.pl#L481) and the `i256` ABI type is not generated.
+
 ## Requirements
 
 * `perl`
