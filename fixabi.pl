@@ -587,13 +587,13 @@ close $fh;
 # Attempt prettify
 print "Indenting fixed ABI file with jq and writing as '$output_file'...\n";
 system("jq '.' $temp_output_file > $output_file");
-
 if ($? != 0) {
-    print "jq not found; just renaming unidented & fixed ABI file to '$output_file'...\n";
-    system("mv $temp_output_file output.json");
-} else {
-    system("rm -f $temp_output_file");
+    print "Can't use jq ($?:$!); copying the unindented & fixed ABI file to '$output_file'...\n";
+    system("cp $temp_output_file $output_file");
 }
+
+# Remove temp file
+system("rm -f $temp_output_file");
 
 # Done!
 print "fixabi.pl done.\n";
